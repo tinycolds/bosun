@@ -171,7 +171,7 @@ func (s *Schedule) runHistory(r *RunHistory, ak models.AlertKey, event *models.E
 		incident.LastAbnormalStatus = event.Status
 		incident.LastAbnormalTime = event.Time.UTC().Unix()
 	}
-	if event.Status > incident.WorstStatus {
+	if event.Status > models.StNormal {
 		incident.WorstStatus = event.Status
 		shouldNotify = true
 	}
